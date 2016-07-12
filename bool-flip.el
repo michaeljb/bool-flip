@@ -44,7 +44,8 @@
     ;; get the val from the chosen hash
     (setq bool-flip-new-val (gethash (thing-at-point 'symbol) hash-to-use))
 
-    ;; fall back to the base hash if the major mode hash doesn't have the key
+    ;; fall back to the base hash if the chosen hash doesn't have the key
+    ;; (wasted cycles here if the  basea hash was already the chosen one)
     (if (not bool-flip-new-val)
 	(setq bool-flip-new-val (gethash (thing-at-point 'symbol) bool-flip-hash-base)))
 
