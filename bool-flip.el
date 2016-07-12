@@ -26,8 +26,8 @@
 (bool-flip-pair "yes" "no")
 (bool-flip-pair "1" "0")
 
-(bool-flip-pair "t" "nil" "lisp-interaction-mode")
 (bool-flip-pair "t" "nil" "emacs-lisp-mode")
+(bool-flip-pair "t" "nil" "lisp-interaction-mode")
 
 (defun bool-flip-do-flip ()
   "Replace the symbol at point with its boolean opposite."
