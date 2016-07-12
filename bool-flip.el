@@ -1,5 +1,5 @@
-(setq bool-flip-hash-base (make-hash-table :test 'equal))
-(setq bool-flip-major-modes (make-hash-table :test 'equal))
+(defvar bool-flip-hash-base (make-hash-table :test 'equal))
+(defvar bool-flip-major-modes (make-hash-table :test 'equal))
 
 (defun bool-flip-pair (true false &optional major-mode-name)
   (let (hash-to-use)
