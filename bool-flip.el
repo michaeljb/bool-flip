@@ -29,7 +29,7 @@
 (bool-flip-pair "t" "nil" "lisp-interaction-mode")
 (bool-flip-pair "t" "nil" "emacs-lisp-mode")
 
-(defun bool-flip ()
+(defun bool-flip-do-flip ()
   "Replace the symbol at point with its boolean opposite."
   (interactive)
   (let (major-mode-name major-mode-hash hash-to-use bool-flip-new-val)
