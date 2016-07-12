@@ -22,8 +22,8 @@
 (bool-flip-pair "Y" "N")
 (bool-flip-pair "y" "n")
 (bool-flip-pair "YES" "NO")
-(bool-flip-pair "yes" "no")
 (bool-flip-pair "Yes" "No")
+(bool-flip-pair "yes" "no")
 (bool-flip-pair "1" "0")
 
 (bool-flip-pair "t" "nil" "lisp-interaction-mode")
