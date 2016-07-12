@@ -1,3 +1,5 @@
+;;; bool-flip.el --- flip the boolean under the point
+
 (defvar bool-flip-hash-base (make-hash-table :test 'equal))
 (defvar bool-flip-major-modes (make-hash-table :test 'equal))
 
@@ -61,3 +63,5 @@
 	  (goto-char pt)))))
 
 (provide 'bool-flip)
+
+;;; bool-flip.el ends here
