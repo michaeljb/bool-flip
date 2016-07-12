@@ -47,7 +47,8 @@
     (setq bool-flip-new-val (gethash (thing-at-point 'symbol) hash-to-use))
 
     ;; fall back to the base hash if the chosen hash doesn't have the key
-    ;; (wasted cycles here if the  base hash was already the chosen one)
+    ;; (wasted cycles here if the base hash was already the chosen one and
+    ;; failed)
     (if (not bool-flip-new-val)
 	(setq bool-flip-new-val (gethash (thing-at-point 'symbol) bool-flip-hash-base)))
 
