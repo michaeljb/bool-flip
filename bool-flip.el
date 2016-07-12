@@ -30,7 +30,7 @@
 (bool-flip-pair "t" "nil" "emacs-lisp-mode")
 
 (defun bool-flip ()
-  "Replace the thing at point with its boolean opposite."
+  "Replace the symbol at point with its boolean opposite."
   (interactive)
   (let (major-mode-name major-mode-hash hash-to-use bool-flip-new-val)
 
@@ -42,13 +42,11 @@
       (setq hash-to-use bool-flip-hash-base))
 
     ;; get the val from the chosen hash
-    (setq bool-flip-new-val (gethash (thing-at-point 'word) hash-to-use))
+    (setq bool-flip-new-val (gethash (thing-at-point 'symbol) hash-to-use))
 
-    ;; try falling back to the base hash if the major mode hash doesn't have the
-    ;; key
-    (if bool-flip-new-val
-	(setq bool-flip-new-val bool-flip-new-val)
-      (setq bool-flip-new-val (gethash (thing-at-point 'word) bool-flip-hash-base)))
+    ;; fall back to the base hash if the major mode hash doesn't have the key
+    (if (not bool-flip-new-val)
+	(setq bool-flip-new-val (gethash (thing-at-point 'symbol) bool-flip-hash-base)))
 
     ;; replace the value in the buffer
     (if bool-flip-new-val
