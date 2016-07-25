@@ -26,7 +26,7 @@ To add a pair that will be active only for a specific mode:
 
 ## Changelog
 
-### 1.0
+### 1.0.0
   * Initial release.
   * Basic true/false and yes/no pairs, as well as 1/0.
   * t/nil pair for Emacs Lisp modes.
