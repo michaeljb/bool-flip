@@ -29,6 +29,9 @@
 
 ;;;###autoload
 (defun bool-flip-pair (true false &optional major-mode-name)
+  "Add a boolean pair consisting of TRUE and FALSE.
+If MAJOR-MODE-NAME is given, the pair will only be flipped by bool-flip-do-flip
+when MAJOR-MODE-NAME is the active major mode."
   (let (hash-to-use)
     (if major-mode-name
 	(let (major-mode-hash)
