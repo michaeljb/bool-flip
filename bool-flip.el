@@ -1,8 +1,33 @@
 ;;; bool-flip.el --- flip the boolean under the point
 
+;; Copyright (C) 2016 Michael Brandt
+;;
+;; Author: Michael Bradnt <michaelbrandt5@gmail.com>
+;; URL: http://github.com/michaeljb/bool-flip/
+;; Package-Requires: ((emacs "24"))
+;; Version: 0.1
+;; Keywords: boolean, convenience, usability
+
+;; This file is not part of GNU Emacs.
+
+;;; License:
+
+;; Licensed under the same terms as Emacs.
+
+;;; Commentary:
+
+;; Bind the following commands:
+;; bool-flip-do-flip
+;;
+;; For a detailed introduction see:
+;; http://github.com/michaeljb/bool-flip/blob/master/README.md
+
+;;; Code:
+
 (defvar bool-flip-hash-base (make-hash-table :test 'equal))
 (defvar bool-flip-major-modes (make-hash-table :test 'equal))
 
+;;;###autoload
 (defun bool-flip-pair (true false &optional major-mode-name)
   (let (hash-to-use)
     (if major-mode-name
@@ -31,6 +56,7 @@
 (bool-flip-pair "t" "nil" "emacs-lisp-mode")
 (bool-flip-pair "t" "nil" "lisp-interaction-mode")
 
+;;;###autoload
 (defun bool-flip-do-flip ()
   "Replace the symbol at point with its boolean opposite."
   (interactive)
@@ -64,5 +90,4 @@
 	  (goto-char pt)))))
 
 (provide 'bool-flip)
-
 ;;; bool-flip.el ends here
