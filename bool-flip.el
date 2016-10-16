@@ -24,39 +24,42 @@
 
 ;;; Code:
 
-(setq bool-flip-pairs-alist
-      '((T . F)
-	(F . T)
+(defcustom bool-flip-pairs-alist
+  '((T . F)
+    (F . T)
 
-	(t . f)
-	(f . t)
+    (t . f)
+    (f . t)
 
-	(TRUE . FALSE)
-	(FALSE . TRUE)
+    (TRUE . FALSE)
+    (FALSE . TRUE)
 
-	(True . False)
-	(False . True)
+    (True . False)
+    (False . True)
 
-	(true . false)
-	(false . true)
+    (true . false)
+    (false . true)
 
-	(Y . N)
-	(N . Y)
+    (Y . N)
+    (N . Y)
 
-	(y . n)
-	(n . y)
+    (y . n)
+    (n . y)
 
-	(YES . NO)
-	(NO . YES)
+    (YES . NO)
+    (NO . YES)
 
-	(Yes . No)
-	(No . Yes)
+    (Yes . No)
+    (No . Yes)
 
-	(yes . no)
-	(no . yes)
+    (yes . no)
+    (no . yes)
 
-	(1 . 0)
-	(0 . 1)))
+    (1 . 0)
+    (0 . 1))
+  "List of values flipped by bool-flip-do-flip."
+  :group 'bool-flip
+  :safe 'listp)
 
 ;;;###autoload
 (defun bool-flip-do-flip ()
