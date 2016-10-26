@@ -24,61 +24,40 @@
 
 ;;; Code:
 
-(defcustom bool-flip-pairs-alist
-  '((T . F)
-    (F . T)
+(require 'cl-lib)
 
-    (t . f)
-    (f . t)
-
-    (TRUE . FALSE)
-    (FALSE . TRUE)
-
-    (True . False)
-    (False . True)
-
-    (true . false)
-    (false . true)
-
-    (Y . N)
-    (N . Y)
-
-    (y . n)
-    (n . y)
-
-    (YES . NO)
-    (NO . YES)
-
-    (Yes . No)
-    (No . Yes)
-
-    (yes . no)
-    (no . yes)
-
-    (1 . 0)
-    (0 . 1))
-  "List of values flipped by bool-flip-do-flip."
+(defcustom bool-flip-alist
+  '(("T"    . "F")
+    ("t"    . "f")
+    ("TRUE" . "FALSE")
+    ("True" . "False")
+    ("true" . "false")
+    ("Y"    . "N")
+    ("y"    . "n")
+    ("YES"  . "NO")
+    ("Yes"  . "No")
+    ("yes"  . "yes")
+    ("1"    . "0"))
+  "List of values flipped by `bool-flip-do-flip'."
   :group 'bool-flip
   :safe 'listp)
 
 ;;;###autoload
 (defun bool-flip-do-flip ()
-  "Replace the symbol at point with its boolean opposite."
+  "Replace the boolean at point with its opposite."
   (interactive)
-  (let (bool-flip-current-val bool-flip-new-val)
-    (setq bool-flip-current-val (intern (thing-at-point 'symbol)))
-
-    (setq bool-flip-new-val (alist-get bool-flip-current-val bool-flip-pairs-alist))
-
-    ;; replace the value in the buffer
-    (if bool-flip-new-val
-	(let (pos1 pos2 pt)
-	  (setq pos1 (car (bounds-of-thing-at-point 'symbol)))
-	  (setq pos2 (cdr (bounds-of-thing-at-point 'symbol)))
-	  (setq pt (point))
-	  (delete-region pos1 pos2)
-	  (insert (symbol-name bool-flip-new-val))
-	  (goto-char pt)))))
+  (let* ((old (thing-at-point 'symbol))
+         (new (or (cdr (assoc  old bool-flip-alist))
+                  (car (rassoc old bool-flip-alist)))))
+    (if new
+        (cl-destructuring-bind (beg . end)
+            (bounds-of-thing-at-point 'symbol)
+          (let ((insert-after (= (point) beg)))
+            (delete-region beg end)
+            (insert new)
+            (when insert-after
+              (goto-char beg))))
+      (user-error "Nothing to flip here"))))
 
 (provide 'bool-flip)
 ;;; bool-flip.el ends here
