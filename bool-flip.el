@@ -36,7 +36,7 @@
     ("y"    . "n")
     ("YES"  . "NO")
     ("Yes"  . "No")
-    ("yes"  . "yes")
+    ("yes"  . "no")
     ("1"    . "0"))
   "List of values flipped by `bool-flip-do-flip'."
   :group 'bool-flip
