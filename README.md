@@ -16,6 +16,11 @@ Add these lines to your `.emacs` file:
 
 ## Changelog
 
+### 1.0.1
+
+  * Fix yes/no pair (was yes/yes). Thanks @nixmaniack. ([#5](https://github.com/michaeljb/bool-flip/pull/5))
+  * Documentation fix. Thanks @solkaz. ([#4](https://github.com/michaeljb/bool-flip/pull/4))
+
 ### 1.0.0
   * Initial release.
   * Basic true/false and yes/no pairs, as well as 1/0.
