@@ -11,7 +11,7 @@ Add these lines to your `.emacs` file:
 
 ```
 (require 'bool-flip)
-(global-set-key (kbd "C-c b") bool-flip-do-flip)
+(global-set-key (kbd "C-c b") 'bool-flip-do-flip)
 ```
 
 ## Changelog
