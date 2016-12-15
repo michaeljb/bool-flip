@@ -5,6 +5,8 @@ point. For example, it changes "true" to "false", and vice versa.
 
 ## Installation
 
+Install via [MELPA](https://melpa.org/).
+
 ## Usage
 
 Add these lines to your `.emacs` file:
